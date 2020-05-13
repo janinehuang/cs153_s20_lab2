@@ -1,0 +1,1662 @@
+Only in xv6: bio.d
+Only in xv6: bio.o
+Only in xv6: bootasm.d
+Only in xv6: bootasm.o
+Only in xv6: bootblock
+Only in xv6: bootblock.asm
+Only in xv6: bootblock.o
+Only in xv6: bootblockother.o
+Only in xv6: bootmain.d
+Only in xv6: bootmain.o
+Only in xv6: _cat
+Only in xv6: cat.asm
+diff -r xv6-origin/cat.c xv6/cat.c
+15c15
+<       exit();
+---
+>       exit(0);
+20c20
+<     exit();
+---
+>     exit(0);
+31c31
+<     exit();
+---
+>     exit(0);
+37c37
+<       exit();
+---
+>       exit(0);
+42c42,43
+<   exit();
+---
+>   exit(0);
+>   return 0;
+Only in xv6: cat.d
+Only in xv6: cat.o
+Only in xv6: cat.sym
+Only in xv6: cmake-build-debug
+Only in xv6: CMakeLists.txt
+Only in xv6: console.d
+Only in xv6: console.o
+diff -r xv6-origin/defs.h xv6/defs.h
+107c107
+< void            exit(void);
+---
+> void            exit(int); //J.H. Lab 1
+120c120
+< int             wait(void);
+---
+> int             wait(int*); //J.H. Lab 1
+122a123,128
+> int             waitpid(int, int*, int); // J.H. Lab 1
+> 
+> void            setprior(int); //J.H. Lab 2
+> int             getprior(void); //J.H. Lab 2
+> int             getwaittime(void); //J.H. Lab 2
+> int             getturntime(void); //J.H. Lab 2
+Only in xv6: _echo
+Only in xv6: echo.asm
+diff -r xv6-origin/echo.c xv6/echo.c
+12c12,13
+<   exit();
+---
+>   exit(0);
+>     return 0;
+Only in xv6: echo.d
+Only in xv6: echo.o
+Only in xv6: echo.sym
+Only in xv6: entry.o
+Only in xv6: entryother
+Only in xv6: entryother.asm
+Only in xv6: entryother.d
+Only in xv6: entryother.o
+diff -r xv6-origin/exec.c xv6/exec.c
+8a9
+> #include "date.h" //Lab 2
+101a103
+>   curproc->turnaround_time = ticks; // Lab 2
+Only in xv6: exec.d
+Only in xv6: exec.o
+Only in xv6: file.d
+Only in xv6: file.o
+Only in xv6: _forktest
+Only in xv6: forktest.asm
+diff -r xv6-origin/forktest.c xv6/forktest.c
+28c28
+<       exit();
+---
+>       exit(0);
+33c33
+<     exit();
+---
+>     exit(0);
+37c37
+<     if(wait() < 0){
+---
+>     if(wait(0) < 0){
+39c39
+<       exit();
+---
+>       exit(0);
+43c43
+<   if(wait() != -1){
+---
+>   if(wait(0) != -1){
+45c45
+<     exit();
+---
+>     exit(0);
+55c55,56
+<   exit();
+---
+>   exit(0);
+>   return 0;
+Only in xv6: forktest.d
+Only in xv6: forktest.o
+Only in xv6: fs.d
+Only in xv6: fs.img
+Only in xv6: fs.o
+Only in xv6: .gdbinit
+Only in xv6/.git: COMMIT_EDITMSG
+Binary files xv6-origin/.git/index and xv6/.git/index differ
+diff -r xv6-origin/.git/logs/HEAD xv6/.git/logs/HEAD
+1c1,2
+< 0000000000000000000000000000000000000000 34f060c3dcf3bf3dde683df9ff9872bc9f1d5d14 Janine Huang <jhuan126@sledge.cs.ucr.edu> 1587763508 -0700	clone: from https://github.com/mit-pdos/xv6-public.git
+---
+> 0000000000000000000000000000000000000000 34f060c3dcf3bf3dde683df9ff9872bc9f1d5d14 Janine Huang <jhuan126@sledge.cs.ucr.edu> 1586212305 -0700	clone: from https://github.com/mit-pdos/xv6-public.git
+> 34f060c3dcf3bf3dde683df9ff9872bc9f1d5d14 52309e220a829ff0dc4c13946615cff97bbfbd9c Janine Huang <jhuan126@sledge.cs.ucr.edu> 1587782678 -0700	commit: lab 1 intial push
+diff -r xv6-origin/.git/logs/refs/heads/master xv6/.git/logs/refs/heads/master
+1c1,2
+< 0000000000000000000000000000000000000000 34f060c3dcf3bf3dde683df9ff9872bc9f1d5d14 Janine Huang <jhuan126@sledge.cs.ucr.edu> 1587763508 -0700	clone: from https://github.com/mit-pdos/xv6-public.git
+---
+> 0000000000000000000000000000000000000000 34f060c3dcf3bf3dde683df9ff9872bc9f1d5d14 Janine Huang <jhuan126@sledge.cs.ucr.edu> 1586212305 -0700	clone: from https://github.com/mit-pdos/xv6-public.git
+> 34f060c3dcf3bf3dde683df9ff9872bc9f1d5d14 52309e220a829ff0dc4c13946615cff97bbfbd9c Janine Huang <jhuan126@sledge.cs.ucr.edu> 1587782678 -0700	commit: lab 1 intial push
+diff -r xv6-origin/.git/logs/refs/remotes/origin/HEAD xv6/.git/logs/refs/remotes/origin/HEAD
+1c1
+< 0000000000000000000000000000000000000000 34f060c3dcf3bf3dde683df9ff9872bc9f1d5d14 Janine Huang <jhuan126@sledge.cs.ucr.edu> 1587763508 -0700	clone: from https://github.com/mit-pdos/xv6-public.git
+---
+> 0000000000000000000000000000000000000000 34f060c3dcf3bf3dde683df9ff9872bc9f1d5d14 Janine Huang <jhuan126@sledge.cs.ucr.edu> 1586212305 -0700	clone: from https://github.com/mit-pdos/xv6-public.git
+Only in xv6/.git/objects: 02
+Only in xv6/.git/objects: 0a
+Only in xv6/.git/objects: 19
+Only in xv6/.git/objects: 1b
+Only in xv6/.git/objects: 21
+Only in xv6/.git/objects: 2a
+Only in xv6/.git/objects: 2d
+Only in xv6/.git/objects: 36
+Only in xv6/.git/objects: 39
+Only in xv6/.git/objects: 3d
+Only in xv6/.git/objects: 51
+Only in xv6/.git/objects: 52
+Only in xv6/.git/objects: 56
+Only in xv6/.git/objects: 64
+Only in xv6/.git/objects: 68
+Only in xv6/.git/objects: 7b
+Only in xv6/.git/objects: 7c
+Only in xv6/.git/objects: 7f
+Only in xv6/.git/objects: 81
+Only in xv6/.git/objects: 8d
+Only in xv6/.git/objects: 8e
+Only in xv6/.git/objects: 98
+Only in xv6/.git/objects: 9c
+Only in xv6/.git/objects: a9
+Only in xv6/.git/objects: aa
+Only in xv6/.git/objects: ad
+Only in xv6/.git/objects: b0
+Only in xv6/.git/objects: b8
+Only in xv6/.git/objects: c9
+Only in xv6/.git/objects: ce
+Only in xv6/.git/objects: d9
+Only in xv6/.git/objects: db
+Only in xv6/.git/objects: df
+Only in xv6/.git/objects: e2
+Only in xv6/.git/objects: e6
+Only in xv6/.git/objects: ea
+Only in xv6/.git/objects: ed
+Only in xv6/.git/objects: f7
+Only in xv6/.git/objects: f8
+Binary files xv6-origin/.git/objects/pack/pack-0a0b49ffe2fd57bf8b02d0b616f3fea7258da8db.idx and xv6/.git/objects/pack/pack-0a0b49ffe2fd57bf8b02d0b616f3fea7258da8db.idx differ
+Binary files xv6-origin/.git/objects/pack/pack-0a0b49ffe2fd57bf8b02d0b616f3fea7258da8db.pack and xv6/.git/objects/pack/pack-0a0b49ffe2fd57bf8b02d0b616f3fea7258da8db.pack differ
+diff -r xv6-origin/.git/refs/heads/master xv6/.git/refs/heads/master
+1c1
+< 34f060c3dcf3bf3dde683df9ff9872bc9f1d5d14
+---
+> 52309e220a829ff0dc4c13946615cff97bbfbd9c
+Only in xv6: _grep
+Only in xv6: grep.asm
+diff -r xv6-origin/grep.c xv6/grep.c
+46c46
+<     exit();
+---
+>     exit(0);
+52c52
+<     exit();
+---
+>     exit(0);
+58c58
+<       exit();
+---
+>       exit(0);
+63c63,64
+<   exit();
+---
+>   exit(0);
+>   return 0;
+Only in xv6: grep.d
+Only in xv6: grep.o
+Only in xv6: grep.sym
+Only in xv6: ide.d
+Only in xv6: ide.o
+Only in xv6: _init
+Only in xv6: init.asm
+diff -r xv6-origin/init.c xv6/init.c
+27c27
+<       exit();
+---
+>       exit(0);
+32c32
+<       exit();
+---
+>       exit(0);
+34c34
+<     while((wpid=wait()) >= 0 && wpid != pid)
+---
+>     while((wpid=wait(0)) >= 0 && wpid != pid)
+Only in xv6: initcode
+Only in xv6: initcode.asm
+Only in xv6: initcode.d
+Only in xv6: initcode.o
+Only in xv6: initcode.out
+Only in xv6: init.d
+Only in xv6: init.o
+Only in xv6: init.sym
+Only in xv6: ioapic.d
+Only in xv6: ioapic.o
+Only in xv6: kalloc.d
+Only in xv6: kalloc.o
+Only in xv6: kbd.d
+Only in xv6: kbd.o
+Only in xv6: kernel
+Only in xv6: kernel.asm
+Only in xv6: kernel.sym
+Only in xv6: _kill
+Only in xv6: kill.asm
+diff -r xv6-origin/kill.c xv6/kill.c
+12c12
+<     exit();
+---
+>     exit(0);
+16c16,17
+<   exit();
+---
+>   exit(0);
+>   return 0;
+Only in xv6: kill.d
+Only in xv6: kill.o
+Only in xv6: kill.sym
+Only in xv6: _lab1_test
+Only in xv6: lab1_test.asm
+Only in xv6: lab1_test.c
+Only in xv6: lab1_test.d
+Only in xv6: lab1_test.o
+Only in xv6: lab1_test.sym
+Only in xv6: _lab2_prog1
+Only in xv6: lab2_prog1.asm
+Only in xv6: lab2_prog1.c
+Only in xv6: lab2_prog1.d
+Only in xv6: lab2_prog1.o
+Only in xv6: lab2_prog1.sym
+Only in xv6: _lab2_prog2
+Only in xv6: lab2_prog2.asm
+Only in xv6: lab2_prog2.c
+Only in xv6: lab2_prog2.d
+Only in xv6: lab2_prog2.o
+Only in xv6: lab2_prog2.sym
+Only in xv6: _lab2_prog3
+Only in xv6: lab2_prog3.asm
+Only in xv6: lab2_prog3.c
+Only in xv6: lab2_prog3.d
+Only in xv6: lab2_prog3.o
+Only in xv6: lab2_prog3.sym
+Only in xv6: _lab2_timeprog
+Only in xv6: lab2_timeprog.asm
+Only in xv6: lab2_timeprog.c
+Only in xv6: lab2_timeprog.d
+Only in xv6: lab2_timeprog.o
+Only in xv6: lab2_timeprog.sym
+Only in xv6: lapic.d
+Only in xv6: lapic.o
+Only in xv6: _ln
+Only in xv6: ln.asm
+diff -r xv6-origin/ln.c xv6/ln.c
+10c10
+<     exit();
+---
+>     exit(0);
+14c14,15
+<   exit();
+---
+>   exit(0);
+>   return 0;
+Only in xv6: ln.d
+Only in xv6: ln.o
+Only in xv6: ln.sym
+Only in xv6: log.d
+Only in xv6: log.o
+Only in xv6: _ls
+Only in xv6: ls.asm
+diff -r xv6-origin/ls.c xv6/ls.c
+80c80
+<     exit();
+---
+>     exit(0);
+84c84,85
+<   exit();
+---
+>   exit(0);
+>   return 0;
+Only in xv6: ls.d
+Only in xv6: ls.o
+Only in xv6: ls.sym
+Only in xv6: main.d
+Only in xv6: main.o
+diff -r xv6-origin/Makefile xv6/Makefile
+181d180
+< 	_usertests\
+183a183,188
+> 	_lab1_test\
+> 	_lab2_prog1\
+> 	_lab2_prog2\
+> 	_lab2_prog3\
+> 	_lab2_timeprog\
+> 	#_usertests\
+220c225
+< CPUS := 2
+---
+> CPUS := 1
+Only in xv6: _mkdir
+Only in xv6: mkdir.asm
+diff -r xv6-origin/mkdir.c xv6/mkdir.c
+12c12
+<     exit();
+---
+>     exit(0);
+22c22,23
+<   exit();
+---
+>   exit(0);
+>   return 0;
+Only in xv6: mkdir.d
+Only in xv6: mkdir.o
+Only in xv6: mkdir.sym
+Only in xv6: mkfs
+Only in xv6: mp.d
+Only in xv6: mp.o
+Only in xv6: picirq.d
+Only in xv6: picirq.o
+Only in xv6: pipe.d
+Only in xv6: pipe.o
+Only in xv6: printf.d
+Only in xv6: printf.o
+diff -r xv6-origin/proc.c xv6/proc.c
+8a9
+> #include "date.h" //Lab 2
+90a92,97
+>   p->priority = 10; //Lab 2
+>   p->turnaround_time = 0; //Lab 2
+>   p->turnaround_finish = 0; //Lab 2
+>   p->turnaround_start = 0; //Lab 2
+>   p->waiting_time = 0; //Lab 2
+>   p->burst_time = 0; //Lab 2
+140a148
+>   p->priority = 10; //Lab 2
+201a210
+>   np->priority = curproc->priority;
+228c237
+< exit(void)
+---
+> exit(int status) //J.H. Lab 1
+231a241
+>   struct rtcdate rtc; //Lab 2
+248a259
+>   curproc->status = status; //J.H. Lab 1
+263a275,279
+>   cmostime(&rtc);
+>   curproc->turnaround_finish = rtc.second;
+> 
+>   curproc->turnaround_time = ticks - curproc->turnaround_time;
+>   curproc->waiting_time = curproc->turnaround_time - curproc->burst_time;
+273c289
+< wait(void)
+---
+> wait(int *status) //J.H. Lab 1
+279c295
+<   acquire(&ptable.lock);
+---
+>   acquire(&ptable.lock); //process table
+297a314,319
+>         if (status) { // J.H. Lab 1
+>             *status = p->status; // returns the terminated child exit status through the status argument
+>         }
+>         else {
+>             p->status = 0; //discard exit status if status is NULL
+>         }
+313a336,405
+> int
+> waitpid(int pid, int* status, int options) //LAB 1 TK
+> {
+>     struct proc *p;
+>     int pidConfirmed;
+>     struct proc *curproc = myproc();
+> 
+>     acquire(&ptable.lock);
+>     for(;;){
+>         // Scan through table looking for exited children.
+>         pidConfirmed = 0;
+>         for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+>             if(p->pid != pid)
+>                 continue;
+>             pidConfirmed = 1;
+>             if(p->state == ZOMBIE){
+>                 // Found one.
+>                 pid = p->pid;
+>                 kfree(p->kstack);
+>                 p->kstack = 0;
+>                 freevm(p->pgdir);
+>                 p->pid = 0;
+>                 p->parent = 0;
+>                 p->name[0] = 0;
+>                 p->killed = 0;
+>                 p->state = UNUSED;
+>                 release(&ptable.lock);
+>                 return pid;
+>             }
+>         }
+> 
+>         // No point waiting if we don't have any children.
+>         if(!pidConfirmed || curproc->killed){
+>             release(&ptable.lock);
+>             return -1;
+>         }
+> 
+>         // Wait for children to exit.  (See wakeup1 call in proc_exit.)
+>         sleep(curproc, &ptable.lock);  //DOC: wait-sleep
+>     }
+> }
+> 
+> //J.H. Lab 2
+> void
+> setprior(int priority) {
+>     struct proc *p = myproc();
+>     if (priority < 0 || priority > 31) {
+>         return;
+>     }
+>     p->priority = priority;
+>     yield(); //priority has changed, call scheduler immediately
+>     return;
+> }
+> 
+> int
+> getprior(void) {
+>     return myproc()->priority;
+> }
+> 
+> int
+> getwaittime(void) {
+>     return myproc()->waiting_time;
+> }
+> 
+> int
+> getturntime(void) {
+>     return myproc()->turnaround_time;
+> }
+> 
+> 
+325,351c417,477
+<   struct proc *p;
+<   struct cpu *c = mycpu();
+<   c->proc = 0;
+<   
+<   for(;;){
+<     // Enable interrupts on this processor.
+<     sti();
+< 
+<     // Loop over process table looking for process to run.
+<     acquire(&ptable.lock);
+<     for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+<       if(p->state != RUNNABLE)
+<         continue;
+< 
+<       // Switch to chosen process.  It is the process's job
+<       // to release ptable.lock and then reacquire it
+<       // before jumping back to us.
+<       c->proc = p;
+<       switchuvm(p);
+<       p->state = RUNNING;
+< 
+<       swtch(&(c->scheduler), p->context);
+<       switchkvm();
+< 
+<       // Process is done running for now.
+<       // It should have changed its p->state before coming back.
+<       c->proc = 0;
+---
+>     struct proc *p;
+>     struct cpu *c = mycpu();
+>     c->proc = 0;
+>     int max_prior = 31; // Lab 2
+>     int burst = 0; // Lab 2
+> 
+>     for(;;) {
+>         // Enable interrupts on this processor.
+>         sti();
+>         acquire(&ptable.lock);
+> 
+>         //find highest priority before looking for process to run (priority closest to 0)
+>         for (p = ptable.proc; p < &ptable.proc[NPROC]; p++) {
+>             if (p->state != RUNNABLE) {
+>                 continue;
+>             }
+>             if (max_prior > p->priority) {
+>                 max_prior = p->priority;
+>             }
+>         }
+> 
+>         // Loop over process table looking for process to run.
+>         for (p = ptable.proc; p < &ptable.proc[NPROC]; p++) {
+>             //if(p->state != RUNNABLE)
+>             //continue;
+> 
+>             if (p->priority == max_prior) { //highest priority
+> 
+>                 // Switch to chosen process.  It is the process's job
+>                 // to release ptable.lock and then reacquire it
+>                 // before jumping back to us.
+>                 c->proc = p;
+>                 switchuvm(p);
+>                 p->state = RUNNING;
+> 
+>                 burst = ticks;
+>                 swtch(&(c->scheduler), p->context);
+>                 switchkvm();
+> 
+>                 // Process is done running for now.
+>                 // It should have changed its p->state before coming back.
+>                 c->proc = 0;
+> 
+>                 burst = ticks - burst;
+>                 p->burst_time += burst;
+>                 if (p->priority > -1 && p->priority < 31) {
+>                     p->priority++;
+>                 } else {
+>                     p->priority = 31; //keep in range
+>                 }
+> 
+>             } else { //process did not run, adjust aging
+> 
+>                 if (p->priority > 0 && p->priority < 32) {
+>                     p->priority--;
+>                 } else {
+>                     p->priority = 0; //keep in range
+>                 }
+>             }
+>         }
+>         release(&ptable.lock);
+353,355d478
+<     release(&ptable.lock);
+< 
+<   }
+356a480
+> 
+Only in xv6: proc.d
+diff -r xv6-origin/proc.h xv6/proc.h
+51a52,58
+>   int  status;                 // Lab 1
+>   int priority;                // Lab 2
+>   int turnaround_start;
+>   int turnaround_finish;
+>   int turnaround_time;
+>   int burst_time;
+>   int waiting_time;
+Only in xv6: proc.o
+Only in xv6: _rm
+Only in xv6: rm.asm
+diff -r xv6-origin/rm.c xv6/rm.c
+12c12
+<     exit();
+---
+>     exit(0);
+22c22,23
+<   exit();
+---
+>   exit(0);
+>   return 0;
+Only in xv6: rm.d
+Only in xv6: rm.o
+Only in xv6: rm.sym
+Only in xv6: _sh
+Only in xv6: sh.asm
+diff -r xv6-origin/sh.c xv6/sh.c
+68c68
+<     exit();
+---
+>     exit(0);
+77c77
+<       exit();
+---
+>       exit(0);
+87c87
+<       exit();
+---
+>       exit(0);
+96c96
+<     wait();
+---
+>     wait(0);
+120,121c120,121
+<     wait();
+<     wait();
+---
+>     wait(0);
+>     wait(0);
+130c130
+<   exit();
+---
+>   exit(0);
+169c169
+<     wait();
+---
+>     wait(0);
+171c171,172
+<   exit();
+---
+>   exit(0);
+>   return 0;
+178c179
+<   exit();
+---
+>   exit(0);
+Only in xv6: sh.d
+Only in xv6: sh.o
+Only in xv6: sh.sym
+Only in xv6: sleeplock.d
+Only in xv6: sleeplock.o
+Only in xv6: spinlock.d
+Only in xv6: spinlock.o
+Only in xv6: _stressfs
+Only in xv6: stressfs.asm
+diff -r xv6-origin/stressfs.c xv6/stressfs.c
+46c46
+<   wait();
+---
+>   wait(0);
+48c48,49
+<   exit();
+---
+>   exit(0);
+>   return 0;
+Only in xv6: stressfs.d
+Only in xv6: stressfs.o
+Only in xv6: stressfs.sym
+Only in xv6: string.d
+Only in xv6: string.o
+Only in xv6: swtch.o
+diff -r xv6-origin/syscall.c xv6/syscall.c
+105a106,111
+> extern int sys_waitpid(void); //J.H. Lab 1
+> extern int sys_setprior(void); //J.H. Lab 2
+> extern int sys_getprior(void); //J.H. Lab 2
+> extern int sys_getturntime(void); //J.H. Lab 2
+> extern int sys_getwaittime(void); //J.H. Lab 2
+> 
+128a135,139
+> [SYS_waitpid] sys_waitpid,
+> [SYS_setprior] sys_setprior,
+> [SYS_getprior] sys_getprior,
+> [SYS_getwaittime] sys_getwaittime,
+> [SYS_getturntime] sys_getturntime,
+Only in xv6: syscall.d
+diff -r xv6-origin/syscall.h xv6/syscall.h
+22a23,27
+> #define SYS_waitpid 22
+> #define SYS_setprior 23
+> #define SYS_getprior 24
+> #define SYS_getwaittime 25
+> #define SYS_getturntime 26
+Only in xv6: syscall.o
+Only in xv6: sysfile.d
+Only in xv6: sysfile.o
+diff -r xv6-origin/sysproc.c xv6/sysproc.c
+19c19
+<   exit();
+---
+>   exit(0); //J.H. Lab 1
+26c26
+<   return wait();
+---
+>   return wait(0);
+27a28,70
+> 
+> int
+> sys_waitpid(void) //J.H. Lab 1
+> {
+>     int pid, options;
+>     int* status;
+>     if (argint(0, &pid) < 0) {
+>         return -1;
+>     }
+>     if (argptr(1, (void*)&status, sizeof(status)) < 0) {
+>         return -1;
+>     }
+>     if (argint(2, &options) < 0) {
+>         return -1;
+>     }
+>     return waitpid(pid, status, options);
+> }
+> 
+> 
+> int
+> sys_setprior(void) { //J.H Lab 2
+>     int prior;
+>     if(argint(0, &prior) < 0)
+>         return -1;
+>     setprior(prior);
+>     return 0;
+> }
+> 
+> int
+> sys_getprior(void) { //J.H Lab 2
+>     return getprior();
+> }
+> 
+> int
+> sys_getwaittime(void) { //J.H Lab 2
+>     return getwaittime();
+> }
+> 
+> int
+> sys_getturntime(void) { //J.H Lab 2
+>     return getturntime();
+> }
+> 
+Only in xv6: sysproc.d
+Only in xv6: sysproc.o
+Only in xv6: _test
+Only in xv6: test.asm
+Only in xv6: test.d
+Only in xv6: test.o
+Only in xv6: test.sym
+Only in xv6: trapasm.o
+diff -r xv6-origin/trap.c xv6/trap.c
+41c41
+<       exit();
+---
+>       exit(0);
+45c45
+<       exit();
+---
+>       exit(0);
+101c101
+<     exit();
+---
+>     exit(0);
+111c111
+<     exit();
+---
+>     exit(0);
+Only in xv6: trap.d
+Only in xv6: trap.o
+Only in xv6: uart.d
+Only in xv6: uart.o
+Only in xv6: ulib.d
+Only in xv6: ulib.o
+Only in xv6: umalloc.d
+Only in xv6: umalloc.o
+diff -r xv6-origin/user.h xv6/user.h
+6,7c6,7
+< int exit(void) __attribute__((noreturn));
+< int wait(void);
+---
+> int exit(int); //J.H. Lab 1
+> int wait(int*); //J.H. Lab 1
+25a26,32
+> int waitpid(int, int*, int);//J.H. Lab 1
+> 
+> void setprior(int); //J.H. Lab 2
+> int getprior(void); //J.H. Lab 2
+> int getwaittime(void); //J.H. Lab 2
+> int getturntime(void); //J.H. Lab 2
+> 
+Only in xv6: _usertests
+diff -r xv6-origin/usertests.c xv6/usertests.c
+24c24
+<     exit();
+---
+>     exit(0);
+28c28
+<     exit();
+---
+>     exit(0);
+32c32
+<     exit();
+---
+>     exit(0);
+36c36
+<     exit();
+---
+>     exit(0);
+41c41
+< // does exit() call iput(p->cwd) in a transaction?
+---
+> // does exit(0) call iput(p->cwd) in a transaction?
+52c52
+<     exit();
+---
+>     exit(0);
+57c57
+<       exit();
+---
+>       exit(0);
+61c61
+<       exit();
+---
+>       exit(0);
+65c65
+<       exit();
+---
+>       exit(0);
+67c67
+<     exit();
+---
+>     exit(0);
+69c69
+<   wait();
+---
+>   wait(0);
+92c92
+<     exit();
+---
+>     exit(0);
+97c97
+<     exit();
+---
+>     exit(0);
+103c103
+<       exit();
+---
+>       exit(0);
+105c105
+<     exit();
+---
+>     exit(0);
+110c110
+<     exit();
+---
+>     exit(0);
+112c112
+<   wait();
+---
+>   wait(0);
+127c127
+<     exit();
+---
+>     exit(0);
+133c133
+<     exit();
+---
+>     exit(0);
+150c150
+<     exit();
+---
+>     exit(0);
+155c155
+<       exit();
+---
+>       exit(0);
+159c159
+<       exit();
+---
+>       exit(0);
+169c169
+<     exit();
+---
+>     exit(0);
+176c176
+<     exit();
+---
+>     exit(0);
+182c182
+<     exit();
+---
+>     exit(0);
+197c197
+<     exit();
+---
+>     exit(0);
+204c204
+<       exit();
+---
+>       exit(0);
+213c213
+<     exit();
+---
+>     exit(0);
+222c222
+<         exit();
+---
+>         exit(0);
+227c227
+<       exit();
+---
+>       exit(0);
+232c232
+<       exit();
+---
+>       exit(0);
+239c239
+<     exit();
+---
+>     exit(0);
+273c273
+<     exit();
+---
+>     exit(0);
+278c278
+<     exit();
+---
+>     exit(0);
+283c283
+<     exit();
+---
+>     exit(0);
+288c288
+<     exit();
+---
+>     exit(0);
+299c299
+<     exit();
+---
+>     exit(0);
+313c313
+<     exit();
+---
+>     exit(0);
+324c324
+<         exit();
+---
+>         exit(0);
+327c327
+<     exit();
+---
+>     exit(0);
+346c346
+<       exit();
+---
+>       exit(0);
+349c349
+<     wait();
+---
+>     wait(0);
+352c352
+<     exit();
+---
+>     exit(0);
+397,399c397,399
+<   wait();
+<   wait();
+<   wait();
+---
+>   wait(0);
+>   wait(0);
+>   wait(0);
+416c416
+<       if(wait() != pid){
+---
+>       if(wait(0) != pid){
+421c421
+<       exit();
+---
+>       exit(0);
+450c450
+<       exit();
+---
+>       exit(0);
+454c454
+<     exit();
+---
+>     exit(0);
+456c456
+<     wait();
+---
+>     wait(0);
+487c487
+<     exit();
+---
+>     exit(0);
+489c489
+<     wait();
+---
+>     wait(0);
+511c511
+<     exit();
+---
+>     exit(0);
+533c533
+<       exit();
+---
+>       exit(0);
+540c540
+<         exit();
+---
+>         exit(0);
+547c547
+<           exit();
+---
+>           exit(0);
+550c550
+<       exit();
+---
+>       exit(0);
+555c555
+<     wait();
+---
+>     wait(0);
+566c566
+<           exit();
+---
+>           exit(0);
+574c574
+<       exit();
+---
+>       exit(0);
+596c596
+<       exit();
+---
+>       exit(0);
+607c607
+<           exit();
+---
+>           exit(0);
+614c614
+<             exit();
+---
+>             exit(0);
+618c618
+<       exit();
+---
+>       exit(0);
+623c623
+<     wait();
+---
+>     wait(0);
+634c634
+<         exit();
+---
+>         exit(0);
+637c637
+<         exit();
+---
+>         exit(0);
+665c665
+<     exit();
+---
+>     exit(0);
+673c673
+<     exit();
+---
+>     exit(0);
+677c677
+<     exit();
+---
+>     exit(0);
+686c686
+<     exit();
+---
+>     exit(0);
+690c690
+<     exit();
+---
+>     exit(0);
+694c694
+<     exit();
+---
+>     exit(0);
+714c714
+<     exit();
+---
+>     exit(0);
+718c718
+<     exit();
+---
+>     exit(0);
+724c724
+<     exit();
+---
+>     exit(0);
+730c730
+<     exit();
+---
+>     exit(0);
+736c736
+<     exit();
+---
+>     exit(0);
+740c740
+<     exit();
+---
+>     exit(0);
+746c746
+<     exit();
+---
+>     exit(0);
+752c752
+<     exit();
+---
+>     exit(0);
+757c757
+<     exit();
+---
+>     exit(0);
+790c790
+<         exit();
+---
+>         exit(0);
+795c795
+<       exit();
+---
+>       exit(0);
+797c797
+<       wait();
+---
+>       wait(0);
+810c810
+<         exit();
+---
+>         exit(0);
+814c814
+<         exit();
+---
+>         exit(0);
+824c824
+<     exit();
+---
+>     exit(0);
+832c832
+<       exit();
+---
+>       exit(0);
+847c847
+<       exit();
+---
+>       exit(0);
+849c849
+<       wait();
+---
+>       wait(0);
+868c868
+<     exit();
+---
+>     exit(0);
+884c884
+<     wait();
+---
+>     wait(0);
+886c886
+<     exit();
+---
+>     exit(0);
+904c904
+<     exit();
+---
+>     exit(0);
+915c915
+<       exit();
+---
+>       exit(0);
+927c927
+<       exit();
+---
+>       exit(0);
+944c944
+<     exit();
+---
+>     exit(0);
+950c950
+<     exit();
+---
+>     exit(0);
+957c957
+<     exit();
+---
+>     exit(0);
+962c962
+<     exit();
+---
+>     exit(0);
+968c968
+<     exit();
+---
+>     exit(0);
+976c976
+<     exit();
+---
+>     exit(0);
+981c981
+<     exit();
+---
+>     exit(0);
+987c987
+<     exit();
+---
+>     exit(0);
+992c992
+<     exit();
+---
+>     exit(0);
+996c996
+<     exit();
+---
+>     exit(0);
+1001c1001
+<     exit();
+---
+>     exit(0);
+1005c1005
+<     exit();
+---
+>     exit(0);
+1009c1009
+<     exit();
+---
+>     exit(0);
+1013c1013
+<     exit();
+---
+>     exit(0);
+1019c1019
+<     exit();
+---
+>     exit(0);
+1023c1023
+<     exit();
+---
+>     exit(0);
+1029c1029
+<     exit();
+---
+>     exit(0);
+1034c1034
+<     exit();
+---
+>     exit(0);
+1038c1038
+<     exit();
+---
+>     exit(0);
+1042c1042
+<     exit();
+---
+>     exit(0);
+1046c1046
+<     exit();
+---
+>     exit(0);
+1050c1050
+<     exit();
+---
+>     exit(0);
+1054c1054
+<     exit();
+---
+>     exit(0);
+1058c1058
+<     exit();
+---
+>     exit(0);
+1062c1062
+<     exit();
+---
+>     exit(0);
+1066c1066
+<     exit();
+---
+>     exit(0);
+1070c1070
+<     exit();
+---
+>     exit(0);
+1074c1074
+<     exit();
+---
+>     exit(0);
+1078c1078
+<     exit();
+---
+>     exit(0);
+1082c1082
+<     exit();
+---
+>     exit(0);
+1086c1086
+<     exit();
+---
+>     exit(0);
+1090c1090
+<     exit();
+---
+>     exit(0);
+1095c1095
+<     exit();
+---
+>     exit(0);
+1099c1099
+<     exit();
+---
+>     exit(0);
+1103c1103
+<     exit();
+---
+>     exit(0);
+1107c1107
+<     exit();
+---
+>     exit(0);
+1111c1111
+<     exit();
+---
+>     exit(0);
+1130c1130
+<       exit();
+---
+>       exit(0);
+1137c1137
+<         exit();
+---
+>         exit(0);
+1158c1158
+<     exit();
+---
+>     exit(0);
+1164c1164
+<       exit();
+---
+>       exit(0);
+1172c1172
+<     exit();
+---
+>     exit(0);
+1179c1179
+<       exit();
+---
+>       exit(0);
+1185c1185
+<       exit();
+---
+>       exit(0);
+1189c1189
+<       exit();
+---
+>       exit(0);
+1196c1196
+<     exit();
+---
+>     exit(0);
+1213c1213
+<     exit();
+---
+>     exit(0);
+1217c1217
+<     exit();
+---
+>     exit(0);
+1222c1222
+<     exit();
+---
+>     exit(0);
+1228c1228
+<     exit();
+---
+>     exit(0);
+1234c1234
+<     exit();
+---
+>     exit(0);
+1238c1238
+<     exit();
+---
+>     exit(0);
+1250c1250
+<     exit();
+---
+>     exit(0);
+1254c1254
+<     exit();
+---
+>     exit(0);
+1258c1258
+<     exit();
+---
+>     exit(0);
+1262c1262
+<     exit();
+---
+>     exit(0);
+1266c1266
+<     exit();
+---
+>     exit(0);
+1270c1270
+<     exit();
+---
+>     exit(0);
+1274c1274
+<     exit();
+---
+>     exit(0);
+1278c1278
+<     exit();
+---
+>     exit(0);
+1293c1293
+<     exit();
+---
+>     exit(0);
+1298c1298
+<     exit();
+---
+>     exit(0);
+1303c1303
+<     exit();
+---
+>     exit(0);
+1308c1308
+<     exit();
+---
+>     exit(0);
+1312c1312
+<     exit();
+---
+>     exit(0);
+1316c1316
+<     exit();
+---
+>     exit(0);
+1320c1320
+<     exit();
+---
+>     exit(0);
+1324c1324
+<     exit();
+---
+>     exit(0);
+1330c1330
+<     exit();
+---
+>     exit(0);
+1335c1335
+<     exit();
+---
+>     exit(0);
+1354c1354
+<       exit();
+---
+>       exit(0);
+1358c1358
+<       exit();
+---
+>       exit(0);
+1391c1391
+<       exit();
+---
+>       exit(0);
+1396c1396
+<     exit();
+---
+>     exit(0);
+1400c1400
+<     if(wait() < 0){
+---
+>     if(wait(0) < 0){
+1402c1402
+<       exit();
+---
+>       exit(0);
+1406c1406
+<   if(wait() != -1){
+---
+>   if(wait(0) != -1){
+1408c1408
+<     exit();
+---
+>     exit(0);
+1431c1431
+<       exit();
+---
+>       exit(0);
+1439c1439
+<     exit();
+---
+>     exit(0);
+1445c1445
+<     exit();
+---
+>     exit(0);
+1448,1449c1448,1449
+<     exit();
+<   wait();
+---
+>     exit(0);
+>   wait(0);
+1458c1458
+<     exit();
+---
+>     exit(0);
+1468c1468
+<     exit();
+---
+>     exit(0);
+1473c1473
+<     exit();
+---
+>     exit(0);
+1481c1481
+<     exit();
+---
+>     exit(0);
+1486c1486
+<     exit();
+---
+>     exit(0);
+1493c1493
+<     exit();
+---
+>     exit(0);
+1502c1502
+<       exit();
+---
+>       exit(0);
+1507c1507
+<       exit();
+---
+>       exit(0);
+1509c1509
+<     wait();
+---
+>     wait(0);
+1516c1516
+<     exit();
+---
+>     exit(0);
+1536c1536
+<     wait();
+---
+>     wait(0);
+1540c1540
+<     exit();
+---
+>     exit(0);
+1575c1575
+<       exit();
+---
+>       exit(0);
+1580c1580
+<     wait();
+---
+>     wait(0);
+1585c1585
+<       exit();
+---
+>       exit(0);
+1603c1603
+<       exit();
+---
+>       exit(0);
+1630c1630
+<     exit();
+---
+>     exit(0);
+1633c1633
+<     exit();
+---
+>     exit(0);
+1635c1635
+<   wait();
+---
+>   wait(0);
+1639c1639
+<     exit();
+---
+>     exit(0);
+1718c1718
+<     exit();
+---
+>     exit(0);
+1721c1721
+<     exit();
+---
+>     exit(0);
+1723c1723
+<   wait();
+---
+>   wait(0);
+1733c1733
+<     exit();
+---
+>     exit(0);
+1755c1755
+<     exit();
+---
+>     exit(0);
+1802c1802,1803
+<   exit();
+---
+>   exit(0);
+>   return 0;
+Only in xv6: usys.o
+diff -r xv6-origin/usys.S xv6/usys.S
+31a32,36
+> SYSCALL(waitpid)
+> SYSCALL(setprior)
+> SYSCALL(getprior)
+> SYSCALL(getwaittime)
+> SYSCALL(getturntime)
+Only in xv6: vectors.o
+Only in xv6: vectors.S
+Only in xv6: vm.d
+Only in xv6: vm.o
+Only in xv6: _wc
+Only in xv6: wc.asm
+diff -r xv6-origin/wc.c xv6/wc.c
+30c30
+<     exit();
+---
+>     exit(0);
+42c42
+<     exit();
+---
+>     exit(0);
+48c48
+<       exit();
+---
+>       exit(0);
+53c53,54
+<   exit();
+---
+>   exit(0);
+>   return 0;
+Only in xv6: wc.d
+Only in xv6: wc.o
+Only in xv6: wc.sym
+Only in xv6: xv6.img
+Only in xv6: _zombie
+Only in xv6: zombie.asm
+diff -r xv6-origin/zombie.c xv6/zombie.c
+13c13,14
+<   exit();
+---
+>   exit(0);
+>   return 0;
+Only in xv6: zombie.d
+Only in xv6: zombie.o
+Only in xv6: zombie.sym
