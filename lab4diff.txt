@@ -1,0 +1,608 @@
+diff xv6/asm.h xv6-origin/asm.h
+17,18d16
+< #define STA_E     0x4       // Expand down (non-executable segments)
+< #define STA_C     0x4       // Conforming code segment (executable only)
+21d18
+< #define STA_A     0x1       // Accessed
+Only in xv6: bio.d
+Only in xv6: bio.o
+Only in xv6: bootasm.d
+Only in xv6: bootasm.o
+Only in xv6: bootblock
+Only in xv6: bootblock.asm
+Only in xv6: bootblock.o
+Only in xv6: bootblockother.o
+Only in xv6: bootmain.d
+Only in xv6: bootmain.o
+Only in xv6: _cat
+Only in xv6: cat.asm
+Only in xv6: cat.d
+Only in xv6: cat.o
+Only in xv6: cat.sym
+Only in xv6: cmake-build-debug
+Only in xv6: console.d
+Only in xv6: console.o
+diff xv6/defs.h xv6-origin/defs.h
+189,197d188
+< //made mappages visible (and removed static) to facilitate implementing shm
+< int
+< mappages(pde_t *pgdir, void *va, uint size, uint pa, int perm);
+< 
+< //shm.c
+< void shminit(void);
+< int shm_open(int id, char **pointer);
+< int shm_close(int id);
+< 
+Only in xv6: _echo
+Only in xv6: echo.asm
+Only in xv6: echo.d
+Only in xv6: echo.o
+Only in xv6: echo.sym
+Only in xv6: entry.o
+Only in xv6: entryother
+Only in xv6: entryother.asm
+Only in xv6: entryother.d
+Only in xv6: entryother.o
+Only in xv6: exec.d
+Only in xv6: exec.o
+diff xv6/file.c xv6-origin/file.c
+133c133
+<     int max = ((LOGSIZE-1-1-2) / 2) * 512;
+---
+>     int max = ((MAXOPBLOCKS-1-1-2) / 2) * 512;
+Only in xv6: file.d
+Only in xv6: file.o
+Only in xv6: _forktest
+Only in xv6: forktest.asm
+diff xv6/forktest.c xv6-origin/forktest.c
+11c11
+< printf(int fd, char *s, ...)
+---
+> printf(int fd, const char *s, ...)
+Only in xv6: forktest.d
+Only in xv6: forktest.o
+diff xv6/fs.c xv6-origin/fs.c
+87d86
+<   readsb(dev, &sb);
+Only in xv6: fs.d
+Only in xv6: fs.img
+Only in xv6: fs.o
+Only in xv6: .gdbinit
+Common subdirectories: xv6/.git and xv6-origin/.git
+diff xv6/.gitignore xv6-origin/.gitignore
+1c1,16
+< .vscode/
+---
+> *~
+> _*
+> *.o
+> *.d
+> *.asm
+> *.sym
+> *.img
+> vectors.S
+> bootblock
+> entryother
+> initcode
+> initcode.out
+> kernel
+> kernelmemfs
+> mkfs
+> .gdbinit
+Only in xv6: _grep
+Only in xv6: grep.asm
+Only in xv6: grep.d
+Only in xv6: grep.o
+Only in xv6: grep.sym
+Only in xv6: ide.d
+Only in xv6: ide.o
+Only in xv6: _init
+Only in xv6: init.asm
+Only in xv6: initcode
+Only in xv6: initcode.asm
+Only in xv6: initcode.d
+Only in xv6: initcode.o
+Only in xv6: initcode.out
+Only in xv6: init.d
+Only in xv6: init.o
+Only in xv6: init.sym
+Only in xv6: ioapic.d
+Only in xv6: ioapic.o
+Only in xv6: kalloc.d
+Only in xv6: kalloc.o
+Only in xv6: kbd.d
+Only in xv6: kbd.o
+Only in xv6: kernel
+Only in xv6: kernel.asm
+Only in xv6: kernel.sym
+Only in xv6: _kill
+Only in xv6: kill.asm
+Only in xv6: kill.d
+Only in xv6: kill.o
+Only in xv6: kill.sym
+Only in xv6: _lab3
+Only in xv6: lab3.asm
+Only in xv6: lab3.c
+Only in xv6: lab3.d
+Only in xv6: lab3.o
+Only in xv6: lab3.sym
+Only in xv6: Lab 4 Report.pdf
+diff xv6/lapic.c xv6-origin/lapic.c
+174c174,175
+< static uint cmos_read(uint reg)
+---
+> static uint
+> cmos_read(uint reg)
+182c183,184
+< static void fill_rtcdate(struct rtcdate *r)
+---
+> static void
+> fill_rtcdate(struct rtcdate *r)
+193c195,196
+< void cmostime(struct rtcdate *r)
+---
+> void
+> cmostime(struct rtcdate *r)
+Only in xv6: lapic.d
+Only in xv6: lapic.o
+diff xv6/LICENSE xv6-origin/LICENSE
+3c3
+< Copyright (c) 2006-2017 Frans Kaashoek, Robert Morris, Russ Cox,
+---
+> Copyright (c) 2006-2018 Frans Kaashoek, Robert Morris, Russ Cox,
+Only in xv6: _ln
+Only in xv6: ln.asm
+Only in xv6: ln.d
+Only in xv6: ln.o
+Only in xv6: ln.sym
+Only in xv6: log.d
+Only in xv6: log.o
+Only in xv6: _ls
+Only in xv6: ls.asm
+Only in xv6: ls.d
+Only in xv6: ls.o
+Only in xv6: ls.sym
+diff xv6/main.c xv6-origin/main.c
+30d29
+<   shminit();       // shared memory
+87c86
+<     *(void**)(code-8) = mpenter;
+---
+>     *(void(**)(void))(code-8) = mpenter;
+Only in xv6: main.d
+Only in xv6: main.o
+diff xv6/Makefile xv6-origin/Makefile
+30d29
+< 	shm.o\
+81d79
+< #CFLAGS = -fno-pic -static -fno-builtin -fno-strict-aliasing -fvar-tracking -fvar-tracking-assignments -O0 -g -Wall -MD -gdwarf-2 -m32 -Werror -fno-omit-frame-pointer
+87c85,93
+< xv6.img: bootblock kernel fs.img
+---
+> # Disable PIE when possible (for Ubuntu 16.10 toolchain)
+> ifneq ($(shell $(CC) -dumpspecs 2>/dev/null | grep -e '[^f]no-pie'),)
+> CFLAGS += -fno-pie -no-pie
+> endif
+> ifneq ($(shell $(CC) -dumpspecs 2>/dev/null | grep -e '[^f]nopie'),)
+> CFLAGS += -fno-pie -nopie
+> endif
+> 
+> xv6.img: bootblock kernel
+138c144
+< 	perl vectors.pl > vectors.S
+---
+> 	./vectors.pl > vectors.S
+140c146
+< ULIB = ulib.o usys.o printf.o umalloc.o uspinlock.o
+---
+> ULIB = ulib.o usys.o printf.o umalloc.o
+143c149
+< 	$(LD) $(LDFLAGS) -N -e main -Ttext 0x1000 -o $@ $^
+---
+> 	$(LD) $(LDFLAGS) -N -e main -Ttext 0 -o $@ $^
+150c156
+< 	$(LD) $(LDFLAGS) -N -e main -Ttext 0x1000 -o _forktest forktest.o ulib.o usys.o
+---
+> 	$(LD) $(LDFLAGS) -N -e main -Ttext 0 -o _forktest forktest.o ulib.o usys.o
+178,179d183
+< 	_shm_cnt\
+< 	_null\
+189,190c193,194
+< 	initcode initcode.out kernel xv6.img fs.img kernelmemfs mkfs \
+< 	.gdbinit \
+---
+> 	initcode initcode.out kernel xv6.img fs.img kernelmemfs \
+> 	xv6memfs.img mkfs .gdbinit \
+216c220
+< CPUS := 1
+---
+> CPUS := 2
+249c253
+< 	printf.c umalloc.c uspinlock.c shm_cnt.c\
+---
+> 	printf.c umalloc.c\
+diff xv6/memlayout.h xv6-origin/memlayout.h
+12c12
+< #define P2V(a) (((void *) (a)) + KERNBASE)
+---
+> #define P2V(a) ((void *)(((char *) (a)) + KERNBASE))
+Only in xv6: _mkdir
+Only in xv6: mkdir.asm
+Only in xv6: mkdir.d
+Only in xv6: mkdir.o
+Only in xv6: mkdir.sym
+Only in xv6: mkfs
+diff xv6/mmu.h xv6-origin/mmu.h
+5,10d4
+< #define FL_CF           0x00000001      // Carry Flag
+< #define FL_PF           0x00000004      // Parity Flag
+< #define FL_AF           0x00000010      // Auxiliary carry Flag
+< #define FL_ZF           0x00000040      // Zero Flag
+< #define FL_SF           0x00000080      // Sign Flag
+< #define FL_TF           0x00000100      // Trap Flag
+12,25d5
+< #define FL_DF           0x00000400      // Direction Flag
+< #define FL_OF           0x00000800      // Overflow Flag
+< #define FL_IOPL_MASK    0x00003000      // I/O Privilege Level bitmask
+< #define FL_IOPL_0       0x00000000      //   IOPL == 0
+< #define FL_IOPL_1       0x00001000      //   IOPL == 1
+< #define FL_IOPL_2       0x00002000      //   IOPL == 2
+< #define FL_IOPL_3       0x00003000      //   IOPL == 3
+< #define FL_NT           0x00004000      // Nested Task
+< #define FL_RF           0x00010000      // Resume Flag
+< #define FL_VM           0x00020000      // Virtual 8086 mode
+< #define FL_AC           0x00040000      // Alignment Check
+< #define FL_VIF          0x00080000      // Virtual Interrupt Flag
+< #define FL_VIP          0x00100000      // Virtual Interrupt Pending
+< #define FL_ID           0x00200000      // ID flag
+29,33d8
+< #define CR0_MP          0x00000002      // Monitor coProcessor
+< #define CR0_EM          0x00000004      // Emulation
+< #define CR0_TS          0x00000008      // Task Switched
+< #define CR0_ET          0x00000010      // Extension Type
+< #define CR0_NE          0x00000020      // Numeric Errror
+35,37d9
+< #define CR0_AM          0x00040000      // Alignment Mask
+< #define CR0_NW          0x20000000      // Not Writethrough
+< #define CR0_CD          0x40000000      // Cache Disable
+85,86d56
+< #define STA_E       0x4     // Expand down (non-executable segments)
+< #define STA_C       0x4     // Conforming code segment (executable only)
+89d58
+< #define STA_A       0x1     // Accessed
+92,98d60
+< #define STS_T16A    0x1     // Available 16-bit TSS
+< #define STS_LDT     0x2     // Local Descriptor Table
+< #define STS_T16B    0x3     // Busy 16-bit TSS
+< #define STS_CG16    0x4     // 16-bit Call Gate
+< #define STS_TG      0x5     // Task Gate / Coum Transmitions
+< #define STS_IG16    0x6     // 16-bit Interrupt Gate
+< #define STS_TG16    0x7     // 16-bit Trap Gate
+100,101d61
+< #define STS_T32B    0xB     // Busy 32-bit TSS
+< #define STS_CG32    0xC     // 32-bit Call Gate
+127d86
+< #define PGSHIFT         12      // log2(PGSIZE)
+138,141d96
+< #define PTE_PWT         0x008   // Write-Through
+< #define PTE_PCD         0x010   // Cache-Disable
+< #define PTE_A           0x020   // Accessed
+< #define PTE_D           0x040   // Dirty
+143d97
+< #define PTE_MBZ         0x180   // Bits must be zero
+193d146
+< // PAGEBREAK: 12
+200c153
+<   uint type : 4;        // type(STS_{TG,IG32,TG32})
+---
+>   uint type : 4;        // type(STS_{IG32,TG32})
+Only in xv6: mp.d
+Only in xv6: mp.o
+Only in xv6: _null
+Only in xv6: null.asm
+Only in xv6: null.c
+Only in xv6: null.d
+Only in xv6: null.o
+Only in xv6: null.sym
+Only in xv6: picirq.d
+Only in xv6: picirq.o
+Only in xv6: pipe.d
+Only in xv6: pipe.o
+diff xv6/printf.c xv6-origin/printf.c
+40c40
+< printf(int fd, char *fmt, ...)
+---
+> printf(int fd, const char *fmt, ...)
+Only in xv6: printf.d
+Only in xv6: printf.o
+Only in xv6: proc.d
+Only in xv6: proc.o
+diff xv6/README xv6-origin/README
+9c9
+< 2000)). See also http://pdos.csail.mit.edu/6.828/2016/xv6.html, which
+---
+> 2000)). See also https://pdos.csail.mit.edu/6.828/, which
+23,30c23,31
+< Boyd-Wickizer, Anton Burtsev, Cody Cutler, Mike CAT, Tej Chajed, Nelson Elhage,
+< Saar Ettinger, Alice Ferrazzi, Nathaniel Filardo, Peter Froehlich, Yakir Goaron,
+< Shivam Handa, Bryan Henry, Jim Huang, Alexander Kapshuk, Anders Kaseorg,
+< kehao95, Wolfgang Keller, Eddie Kohler, Austin Liew, Imbar Marinescu, Yandong
+< Mao, Hitoshi Mitake, Carmi Merimovich, Joel Nider, Greg Price, Ayan Shafqat,
+< Eldar Sehayek, Yongming Shen, Cam Tenny, Rafael Ubal, Warren Toomey, Stephen Tu,
+< Pablo Ventura, Xi Wang, Keiichi Watanabe, Nicolas Wolovick, Grant Wu, Jindong
+< Zhang, Icenowy Zheng, and Zou Chang Wei.
+---
+> Boyd-Wickizer, Anton Burtsev, Cody Cutler, Mike CAT, Tej Chajed, eyalz800,
+> Nelson Elhage, Saar Ettinger, Alice Ferrazzi, Nathaniel Filardo, Peter
+> Froehlich, Yakir Goaron,Shivam Handa, Bryan Henry, Jim Huang, Alexander
+> Kapshuk, Anders Kaseorg, kehao95, Wolfgang Keller, Eddie Kohler, Austin
+> Liew, Imbar Marinescu, Yandong Mao, Matan Shabtay, Hitoshi Mitake, Carmi
+> Merimovich, Mark Morrissey, mtasm, Joel Nider, Greg Price, Ayan Shafqat,
+> Eldar Sehayek, Yongming Shen, Cam Tenny, tyfkda, Rafael Ubal, Warren
+> Toomey, Stephen Tu, Pablo Ventura, Xi Wang, Keiichi Watanabe, Nicolas
+> Wolovick, wxdao, Grant Wu, Jindong Zhang, Icenowy Zheng, and Zou Chang Wei.
+33c34
+< Copyright 2006-2016 Frans Kaashoek, Robert Morris, and Russ Cox.
+---
+> Copyright 2006-2018 Frans Kaashoek, Robert Morris, and Russ Cox.
+37,40c38,39
+< Please send errors and suggestions to Frans Kaashoek and Robert Morris
+< (kaashoek,rtm@mit.edu). The main purpose of xv6 is as a teaching
+< operating system for MIT's 6.828, so we are more interested in
+< simplifications and clarifications than new features.
+---
+> We switched our focus to xv6 on RISC-V; see the mit-pdos/xv6-riscv.git
+> repository on github.com.
+47c46
+< x86 ELF binaries. See http://pdos.csail.mit.edu/6.828/2016/tools.html.
+---
+> x86 ELF binaries (see https://pdos.csail.mit.edu/6.828/).
+49c48
+< simulator and run "make qemu".
+---
+> simulator and run "make qemu".
+\ No newline at end of file
+Only in xv6: _rm
+Only in xv6: rm.asm
+Only in xv6: rm.d
+Only in xv6: rm.o
+Only in xv6: rm.sym
+diff xv6/runoff xv6-origin/runoff
+16a17
+> echo > fmt/blank
+217c218,220
+< 	# pr.pl -h "cross-references" -2 refs | pad 
+---
+> 	# pr.pl -h "cross-references" -2 refs | pad
+> 	../pr.pl blank  # make sheet 1 start on left page
+> 	../pr.pl blank
+diff xv6/runoff.list xv6-origin/runoff.list
+9a10
+> date.h
+77a79,80
+> # link
+> kernel.ld
+Only in xv6: _sh
+Only in xv6: sh.asm
+Only in xv6: sh.d
+Only in xv6: shm.c
+Only in xv6: _shm_cnt
+Only in xv6: shm_cnt.asm
+Only in xv6: shm_cnt.c
+Only in xv6: shm_cnt.d
+Only in xv6: shm_cnt.o
+Only in xv6: shm_cnt.sym
+Only in xv6: shm.d
+Only in xv6: shm.o
+Only in xv6: sh.o
+Only in xv6: sh.sym
+diff xv6/sleeplock.c xv6-origin/sleeplock.c
+50c50
+<   r = lk->locked;
+---
+>   r = lk->locked && (lk->pid == myproc()->pid);
+Only in xv6: sleeplock.d
+Only in xv6: sleeplock.o
+diff xv6/spinlock.c xv6-origin/spinlock.c
+92c92,96
+<   return lock->locked && lock->cpu == mycpu();
+---
+>   int r;
+>   pushcli();
+>   r = lock->locked && lock->cpu == mycpu();
+>   popcli();
+>   return r;
+Only in xv6: spinlock.d
+Only in xv6: spinlock.o
+Only in xv6: _stressfs
+Only in xv6: stressfs.asm
+Only in xv6: stressfs.d
+Only in xv6: stressfs.o
+Only in xv6: stressfs.sym
+Only in xv6: string.d
+Only in xv6: string.o
+Only in xv6: swtch.o
+diff xv6/swtch.S xv6-origin/swtch.S
+5,6c5,7
+< # Save current register context in old
+< # and then load register context from new.
+---
+> # Save the current registers on the stack, creating
+> # a struct context, and save its address in *old.
+> # Switch stacks to new and pop previously-saved registers.
+13c14
+<   # Save old callee-save registers
+---
+>   # Save old callee-saved registers
+23c24
+<   # Load new callee-save registers
+---
+>   # Load new callee-saved registers
+Only in xv6: symlink.patch
+diff xv6/syscall.c xv6-origin/syscall.c
+107,109d106
+< extern int sys_shm_open(void);
+< extern int sys_shm_close(void);
+< 
+132,133d128
+< [SYS_shm_open] sys_shm_open,
+< [SYS_shm_close] sys_shm_close
+Only in xv6: syscall.d
+diff xv6/syscall.h xv6-origin/syscall.h
+23,24d22
+< #define SYS_shm_open 22
+< #define SYS_shm_close 23
+Only in xv6: syscall.o
+diff xv6/sysfile.c xv6-origin/sysfile.c
+244d243
+<   uint off;
+252c251
+<   if((ip = dirlookup(dp, name, &off)) != 0){
+---
+>   if((ip = dirlookup(dp, name, 0)) != 0){
+Only in xv6: sysfile.d
+Only in xv6: sysfile.o
+diff xv6/sysproc.c xv6-origin/sysproc.c
+10,31d9
+< int sys_shm_open(void) {
+<   int id;
+<   char **pointer;
+< 
+<   if(argint(0, &id) < 0)
+<     return -1;
+< 
+<   if(argptr(1, (char **) (&pointer),4)<0)
+<     return -1;
+<   return shm_open(id, pointer);
+< }
+< 
+< int sys_shm_close(void) {
+<   int id;
+< 
+<   if(argint(0, &id) < 0)
+<     return -1;
+< 
+<   
+<   return shm_close(id);
+< }
+< 
+Only in xv6: sysproc.d
+Only in xv6: sysproc.o
+Only in xv6: _test
+Only in xv6: test.asm
+Only in xv6: test.c
+Only in xv6: test.d
+Only in xv6: test.o
+Only in xv6: test.sym
+Only in xv6: trapasm.o
+Only in xv6: trap.d
+Only in xv6: trap.o
+Only in xv6: uart.d
+Only in xv6: uart.o
+diff xv6/ulib.c xv6-origin/ulib.c
+8c8
+< strcpy(char *s, char *t)
+---
+> strcpy(char *s, const char *t)
+27c27
+< strlen(char *s)
+---
+> strlen(const char *s)
+71c71
+< stat(char *n, struct stat *st)
+---
+> stat(const char *n, struct stat *st)
+96c96
+< memmove(void *vdst, void *vsrc, int n)
+---
+> memmove(void *vdst, const void *vsrc, int n)
+98c98,99
+<   char *dst, *src;
+---
+>   char *dst;
+>   const char *src;
+Only in xv6: ulib.d
+Only in xv6: ulib.o
+Only in xv6: umalloc.d
+Only in xv6: umalloc.o
+diff xv6/user.h xv6-origin/user.h
+9c9
+< int write(int, void*, int);
+---
+> int write(int, const void*, int);
+14,16c14,16
+< int open(char*, int);
+< int mknod(char*, short, short);
+< int unlink(char*);
+---
+> int open(const char*, int);
+> int mknod(const char*, short, short);
+> int unlink(const char*);
+18,20c18,20
+< int link(char*, char*);
+< int mkdir(char*);
+< int chdir(char*);
+---
+> int link(const char*, const char*);
+> int mkdir(const char*);
+> int chdir(const char*);
+26,27d25
+< int shm_open(int, char **);
+< int shm_close(int);
+30,32c28,30
+< int stat(char*, struct stat*);
+< char* strcpy(char*, char*);
+< void *memmove(void*, void*, int);
+---
+> int stat(const char*, struct stat*);
+> char* strcpy(char*, const char*);
+> void *memmove(void*, const void*, int);
+35c33
+< void printf(int, char*, ...);
+---
+> void printf(int, const char*, ...);
+37c35
+< uint strlen(char*);
+---
+> uint strlen(const char*);
+Only in xv6: _usertests
+Only in xv6: usertests.asm
+Only in xv6: usertests.d
+Only in xv6: usertests.o
+Only in xv6: usertests.sym
+Only in xv6: uspinlock.c
+Only in xv6: uspinlock.d
+Only in xv6: uspinlock.h
+Only in xv6: uspinlock.o
+Only in xv6: usys.o
+diff xv6/usys.S xv6-origin/usys.S
+32,33d31
+< SYSCALL(shm_open)
+< SYSCALL(shm_close)	
+Only in xv6: vectors.o
+Only in xv6: vectors.S
+diff xv6/vm.c xv6-origin/vm.c
+60c60
+< int
+---
+> static int
+335c335,336
+<     if(mappages(d, (void*)i, PGSIZE, V2P(mem), flags) < 0)
+---
+>     if(mappages(d, (void*)i, PGSIZE, V2P(mem), flags) < 0) {
+>       kfree(mem);
+336a338
+>     }
+Only in xv6: vm.d
+Only in xv6: vm.o
+Only in xv6: _wc
+Only in xv6: wc.asm
+Only in xv6: wc.d
+Only in xv6: wc.o
+Only in xv6: wc.sym
+Only in xv6: xv6.img
+Only in xv6: _zombie
+Only in xv6: zombie.asm
+Only in xv6: zombie.d
+Only in xv6: zombie.o
+Only in xv6: zombie.sym
